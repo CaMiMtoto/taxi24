@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import xyz.codeiwthcami.taxi24.models.Driver;
 import xyz.codeiwthcami.taxi24.respositories.DriverRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -39,15 +40,52 @@ public class DriverService {
 
     public void seedDrivers() {
         Faker faker = new Faker(new Random(24));
-        for (int i = 0; i < 10; i++) {
-            Driver driver = new Driver();
-            driver.setName(faker.name().fullName());
-            driver.setPhone(faker.phoneNumber().phoneNumber());
-            driver.setEmail(faker.internet().emailAddress());
-            driver.setLatitude(faker.address().latitude());
-            driver.setLongitude(faker.address().longitude());
-            driver.setIsAvailable(faker.bool().bool());
-            driverRepository.save(driver);
-        }
+
+        List<Driver> drivers = new ArrayList<>();
+
+        drivers.add(new Driver(
+                faker.name().fullName(),
+                faker.phoneNumber().cellPhone(),
+                faker.internet().emailAddress(),
+                String.valueOf(-1.956537),
+                String.valueOf(30.063616),
+                true
+        ));
+
+        drivers.add(new Driver(
+                faker.name().fullName(),
+                faker.phoneNumber().cellPhone(),
+                faker.internet().emailAddress(),
+                String.valueOf(-1.971142),
+                String.valueOf(30.103683),
+                true
+        ));
+        drivers.add(new Driver(
+                faker.name().fullName(),
+                faker.phoneNumber().cellPhone(),
+                faker.internet().emailAddress(),
+                String.valueOf(-1.949549),
+                String.valueOf(30.126161),
+                false
+        ));
+        drivers.add(new Driver(
+                faker.name().fullName(),
+                faker.phoneNumber().cellPhone(),
+                faker.internet().emailAddress(),
+                String.valueOf(-1.978963),
+                String.valueOf(30.223335),
+                true
+        ));
+        drivers.add(new Driver(
+                faker.name().fullName(),
+                faker.phoneNumber().cellPhone(),
+                faker.internet().emailAddress(),
+                String.valueOf(-1.977940),
+                String.valueOf(30.043773),
+                true
+        ));
+
+        driverRepository.saveAll(drivers);
+
     }
 }

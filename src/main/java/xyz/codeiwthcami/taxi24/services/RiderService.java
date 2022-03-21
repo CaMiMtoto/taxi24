@@ -7,7 +7,6 @@ import xyz.codeiwthcami.taxi24.models.Rider;
 import xyz.codeiwthcami.taxi24.respositories.DriverRepository;
 import xyz.codeiwthcami.taxi24.respositories.RiderRepository;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,7 +38,7 @@ public class RiderService {
         for (int i = 0; i < 10; i++) {
             Rider rider = new Rider();
             rider.setName(faker.name().fullName());
-            rider.setPhone(faker.phoneNumber().phoneNumber());
+            rider.setPhone(faker.phoneNumber().cellPhone());
             rider.setEmail(faker.internet().emailAddress());
             riderRepository.save(rider);
         }
