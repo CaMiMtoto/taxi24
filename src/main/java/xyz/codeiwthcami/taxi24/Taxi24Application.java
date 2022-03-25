@@ -17,8 +17,8 @@ public class Taxi24Application {
     @Bean
     CommandLineRunner runner(DriverService driverService, RiderService riderService) {
         return args -> {
-           /* driverService.seedDrivers();
-            riderService.seedRiders();*/
+            driverService.seedDrivers();
+            riderService.seedRiders();
         };
     }
 }
